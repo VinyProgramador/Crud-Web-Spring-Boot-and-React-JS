@@ -1,7 +1,7 @@
-import Post from './pages/Post';
-import Feed from './pages/Feed';
-import NotFound from './pages/NotFound';
-import EditPost from './pages/EditPost';
+import Post from './pages/Post/Post';
+import Feed from './pages/Feed/Feed';
+import NotFound from './pages/NotFound/NotFound';
+import EditPost from './pages/EditPost/EditPost';
 
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 

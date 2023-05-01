@@ -1,0 +1,44 @@
+
+header {
+    background-color: #2F3644;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    max-width: 1100px;
+    margin: 0 auto;
+
+    height: 100px;
+}
+
+.logo h1 {
+    font-family: monospace;
+    font-weight: 700;
+    color: #29EBAA;
+
+    cursor: pointer;
+}
+
+.btn-newPost button{
+    font-size: 1.2rem;
+    font-family: monospace;
+    font-weight: 700;
+
+    background-color: #29EBAA;
+    border: 0;
+
+    color: #2F3644;
+
+    padding: 10px 20px;
+    border-radius: 10px;
+
+    cursor: pointer;
+}
+
+.btn-newPost button:hover {
+    transition: 0.2s;
+    background-color: #5ae2b4;
+}
