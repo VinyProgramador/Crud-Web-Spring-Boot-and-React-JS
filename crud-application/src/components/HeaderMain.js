@@ -6,7 +6,7 @@ function HeaderMain() {
         <header>
             <div className="container">
                 <div className="logo" >
-                    <h1>Crud By Viny</h1>
+                    <h1>Forum</h1>
                 </div>
                 <div className="btn-newPost" >
                     <Link to="/post" >

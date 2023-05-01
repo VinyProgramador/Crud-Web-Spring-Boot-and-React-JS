@@ -17,7 +17,7 @@ const Feed = () => {
             <p></p>
             <div className="btns" >
               <div className="btn-edit">
-                <Link to={''} >
+                <Link to={'/edit'} >
                   <button>Edit</button>
                 </Link>
               </div>
