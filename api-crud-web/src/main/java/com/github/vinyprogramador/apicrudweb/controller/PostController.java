@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/posts")
@@ -16,6 +17,7 @@ public class PostController {
     PostRepository postRepository;
 
     //Show all posts
+    @CrossOrigin
     @GetMapping
     ResponseEntity<List<Post>> allPosts() {
         List<Post> posts = postRepository.findAll();
@@ -26,6 +28,7 @@ public class PostController {
     }
 
     //Add a new post
+    @CrossOrigin
     @PostMapping
     ResponseEntity<Post> addPost(@RequestBody Post post) {
         postRepository.save(post);
@@ -33,6 +36,7 @@ public class PostController {
     }
 
     //Update post
+    @CrossOrigin
     @PutMapping
     public ResponseEntity<Post> updatePost(@RequestParam Integer id, @RequestBody Post post) {
         if (postRepository.existsById(id)) {
@@ -43,7 +47,18 @@ public class PostController {
         return ResponseEntity.status(404).build();
     }
 
+    //search by id
+    @GetMapping("/id")
+    public ResponseEntity<Optional<Post>> searchById(@RequestParam Integer id){
+        Optional<Post> postOptional = postRepository.findById(id);
+        if (postOptional.isPresent()){
+            return ResponseEntity.status(200).body(postOptional);
+        }
+        return ResponseEntity.status(404).build();
+    }
+
     //Delete post by id
+    @CrossOrigin
     @DeleteMapping
     public ResponseEntity<Post> deletePostById(@RequestParam Integer id) {
         if (postRepository.existsById(id)) {

@@ -12,6 +12,7 @@ const Feed = () => {
     axios.get('http://localhost:8080/posts')
       .then((response) => {
         console.log('ok');
+        console.log(axios.get('http://localhost:8080/posts'))
         setPosts(response.data)
       }).catch((err) => {
         console.log(err);
@@ -34,7 +35,7 @@ const Feed = () => {
                 <h3>{post.content}</h3>
                 <div className="btns" >
                   <div className="btn-edit">
-                    <Link to={'/edit'} >
+                    <Link to={{ pathname: `/edit/${post.id}` }} >
                       <button>Edit</button>
                     </Link>
                   </div>

@@ -5,6 +5,10 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotBlank;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 public class Post {
@@ -13,8 +17,10 @@ public class Post {
     private Integer id;
     @NotBlank
     private String title;
-    @NotBlank
-    private String description;
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    private LocalDate dateCreation = LocalDate.now();
+    @NotBlank private String content;
+
     public Integer getId() {
         return id;
     }
@@ -31,11 +37,19 @@ public class Post {
         this.title = title;
     }
 
-    public String getDescription() {
-        return description;
+    public LocalDate getDateCreation() {
+        return dateCreation;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setDateCreation(LocalDate dateCreation) {
+        this.dateCreation = dateCreation;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
     }
 }

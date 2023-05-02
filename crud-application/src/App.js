@@ -12,7 +12,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Feed />}/>
           <Route path='/post' element={<Post />}/>
-          <Route path='/edit' element={<EditPost />}/>
+          <Route path='/edit/:id' element={<EditPost />}/>
           <Route path='/*' element={<NotFound />}/>
         </Routes>
       </BrowserRouter>
