@@ -1,15 +1,23 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import Header from '../../components/Header'
 import '../Post/Post.css'
 import { useForm } from 'react-hook-form'
+import axios from 'axios'
 
 const Post = () => {
  
-  const { register, handleSubmit, formState: { erros } } = useForm()
+  const { register, handleSubmit, formState: { erros } } = useForm({
+      
+  })
  
-  const addNewPost = data => console.log(data);
-
+  const addNewPost = data => axios.post("http://localhost:8080/posts", data)
+  .then(() => {
+    console.log("new post successfully added");
+    alert("new post successfully added");
+    window.location = '/';
+  }).catch((err) => {
+    console.log(err);
+  });
   return (
     <div>
       <Header />
@@ -22,17 +30,14 @@ const Post = () => {
               <div className="fields" >
                 <label>Título</label>
                 <input type="text" name="title" {...register("title")}/>
-                <p className="error-message"></p>
               </div>
               <div className="fields" >
                 <label>Descrição</label>
                 <input type="text" name="description" {...register("description")}/>
-                <p className="error-message"></p>
               </div>
               <div className="fields" >
                 <label>Conteúdo</label>
                 <textarea type="text" name="content" {...register("content")}></textarea>
-                <p className="error-message"></p>
               </div>
               <div className="btn-post" >
                 <button type="submit">Enviar</button>
