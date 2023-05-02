@@ -32,10 +32,6 @@ const Post = () => {
                 <input type="text" name="title" {...register("title")}/>
               </div>
               <div className="fields" >
-                <label>Descrição</label>
-                <input type="text" name="description" {...register("description")}/>
-              </div>
-              <div className="fields" >
                 <label>Conteúdo</label>
                 <textarea type="text" name="content" {...register("content")}></textarea>
               </div>

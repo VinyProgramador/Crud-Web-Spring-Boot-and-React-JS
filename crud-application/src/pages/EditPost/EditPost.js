@@ -17,11 +17,6 @@ const EditPost = () => {
                 <p className="error-message"></p>
               </div>
               <div className="fields" >
-                <label>Descrição</label>
-                <input type="text" name="description" />
-                <p className="error-message"></p>
-              </div>
-              <div className="fields" >
                 <label>Conteúdo</label>
                 <textarea type="text" name="content" ></textarea>
                 <p className="error-message"></p>

@@ -68,11 +68,21 @@ main .cards .card {
 
 p {
     margin-top: 20px;
-    font-size: 1.2rem;
+    font-size: 0.9rem;
     
     max-width: 500px;
 
-    font-family: Noto Sans;
+    font-weight: 500;
+
+    color: #B3BACF;
+}
+
+h3{
+    margin-top: 20px;
+    font-size: 1.5rem;
+    
+    max-width: 500px;
+
     font-weight: 500;
 
     color: #B3BACF;
