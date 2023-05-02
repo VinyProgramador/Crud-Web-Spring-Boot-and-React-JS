@@ -19,6 +19,12 @@ const Feed = () => {
       });
   }, [])
 
+  function deletePost(id) {
+    axios.delete(`http://localhost:8080/posts/${id}`)
+
+    setPosts(posts.filter(post => post._id !== id))
+  }
+
   return (
     <div>
       <HeaderMain />
@@ -40,7 +46,7 @@ const Feed = () => {
                     </Link>
                   </div>
                   <div className="btn-delete">
-                    <button>delete</button>
+                    <button onClick={() => deletePost(post._id)}>delete</button>
                   </div>
                 </div>
               </div>
