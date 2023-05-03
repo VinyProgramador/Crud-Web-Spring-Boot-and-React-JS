@@ -19,10 +19,9 @@ const Feed = () => {
       });
   }, [])
 
-  function deletePost(id) {
-    axios.delete(`http://localhost:8080/posts/${id}`)
-
-    setPosts(posts.filter(post => post._id !== id))
+  function deletePost(id){
+      axios.delete(`http://localhost:8080/posts/${id}`)
+      setPosts(posts.filter(post => post.id !== id ))
   }
 
   return (
@@ -46,7 +45,7 @@ const Feed = () => {
                     </Link>
                   </div>
                   <div className="btn-delete">
-                    <button onClick={() => deletePost(post._id)}>delete</button>
+                    <button onClick={() => deletePost(post.id)}>delete</button>
                   </div>
                 </div>
               </div>

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/posts")
 public class PostController {
@@ -17,7 +18,7 @@ public class PostController {
     PostRepository postRepository;
 
     //Show all posts
-    @CrossOrigin
+    @CrossOrigin(origins = { "http://localhost:3000"})
     @GetMapping
     ResponseEntity<List<Post>> allPosts() {
         List<Post> posts = postRepository.findAll();
@@ -28,7 +29,7 @@ public class PostController {
     }
 
     //Add a new post
-    @CrossOrigin
+    @CrossOrigin(origins = { "http://localhost:3000"})
     @PostMapping
     ResponseEntity<Post> addPost(@RequestBody Post post) {
         postRepository.save(post);
@@ -36,9 +37,9 @@ public class PostController {
     }
 
     //Update post
-    @CrossOrigin
-    @PutMapping
-    public ResponseEntity<Post> updatePost(@RequestParam Integer id, @RequestBody Post post) {
+    @CrossOrigin(origins = { "http://localhost:3000"})
+    @PutMapping("/{id}")
+    public ResponseEntity<Post> updatePost(@PathVariable Integer id, @RequestBody Post post) {
         if (postRepository.existsById(id)) {
             post.setId(id);
             Post newPostUpdate = postRepository.save(post);
@@ -48,8 +49,9 @@ public class PostController {
     }
 
     //search by id
-    @GetMapping("/id")
-    public ResponseEntity<Optional<Post>> searchById(@RequestParam Integer id){
+    @CrossOrigin(origins = { "http://localhost:3000"})
+    @GetMapping("/{id}")
+    public ResponseEntity<Optional<Post>> searchById(@PathVariable Integer id){
         Optional<Post> postOptional = postRepository.findById(id);
         if (postOptional.isPresent()){
             return ResponseEntity.status(200).body(postOptional);
@@ -58,9 +60,9 @@ public class PostController {
     }
 
     //Delete post by id
-    @CrossOrigin
-    @DeleteMapping
-    public ResponseEntity<Post> deletePostById(@RequestParam Integer id) {
+    @CrossOrigin(origins = { "http://localhost:3000"})
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Post> deletePostById(@PathVariable Integer id) {
         if (postRepository.existsById(id)) {
             postRepository.deleteById(id);
             return ResponseEntity.status(200).build();
