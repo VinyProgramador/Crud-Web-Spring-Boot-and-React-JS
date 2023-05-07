@@ -3,8 +3,12 @@ package com.github.vinyprogramador.apicrudweb.controller;
 import com.github.vinyprogramador.apicrudweb.entity.Post;
 import com.github.vinyprogramador.apicrudweb.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,6 +20,7 @@ public class PostController {
 
     @Autowired
     PostRepository postRepository;
+
 
     //Show all posts
     @CrossOrigin(origins = { "http://localhost:3000"})

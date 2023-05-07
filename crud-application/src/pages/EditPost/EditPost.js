@@ -11,22 +11,27 @@ const EditPost = () => {
 
   let navigate = useNavigate();
 
-  const addNewPost = data => axios.put(`http://localhost:8080/posts/edit/${id}`, data)
-  .then(() => {
+  const addNewPost = data => axios.put(`http://localhost:8080/posts/edit/${id}`, data, {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+    .then(() => {
       console.log("ok")
       window.location = '/'
-  })
-  .catch((err) => {
+    })
+    .catch((err) => {
       console.log(err)
-  })
+    })
+
 
 
   useEffect(() => {
-      axios.get(`http://localhost:8080/posts/${id}`)
+    axios.get(`http://localhost:8080/posts/${id}`)
       .then((response) => {
-          reset(response.data)
+        reset(response.data)
       })
-      
+
   }, [])
 
   const { register, handleSubmit, formState: { erros }, reset } = useForm({
